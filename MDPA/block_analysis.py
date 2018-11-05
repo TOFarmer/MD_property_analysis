@@ -1,17 +1,4 @@
-try:
-    import matplotlib.pyplot as plt
-except RuntimeError:
-    # Backend not found, try to find backend
-    for backend in ['Qt5Agg', 'GTK3Agg', 'macosx', 'TkAgg', 'nbAgg', 'WebAgg',
-                    'GtK3Cairo', 'Qt4Agg', 'WxAgg']:
-        try:
-            import matplotlib
-            matplotlib.use(backend)
-        except RuntimeError:
-            pass
-    # Default to postscript
-    import matplotlib
-    matplotlib.use('PS')
+import matplotlib.pyplot as plt
 import numpy as np
 
 
