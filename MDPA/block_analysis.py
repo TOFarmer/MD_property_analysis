@@ -1,5 +1,19 @@
-import matplotlib.pyplot as plt
+try:
+    import matplotlib.pyplot as plt
+except RuntimeError:
+    # Backend not found, try to find backend
+    for backend in ['Qt5Agg', 'GTK3Agg', 'macosx', 'TkAgg', 'nbAgg', 'WebAgg',
+                    'GtK3Cairo', 'Qt4Agg', 'WxAgg']:
+        try:
+            import matplotlib
+            matplotlib.use(backend)
+        except RuntimeError:
+            pass
+    # Default to postscript
+    import matplotlib
+    matplotlib.use('PS')
 import numpy as np
+
 
 def blockAverage(datastream, showPlot=True, maxBlockSize=0, sectionSize=100,
 				 dataFileName=None, plotFileName=None, varName='x',
